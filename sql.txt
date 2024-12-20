@@ -1,0 +1,52 @@
+-- Crear la base de datos
+CREATE DATABASE IF NOT EXISTS Biblioteca;
+USE Biblioteca;
+
+-- Crear tabla USUARIOS
+CREATE TABLE IF NOT EXISTS USUARIOS (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL,
+    ape1 VARCHAR(50) NOT NULL,
+    ape2 VARCHAR(50),
+    rol ENUM('admin', 'usuario', 'bibliotecario') NOT NULL
+);
+
+-- Insertar datos en la tabla USUARIOS
+INSERT INTO USUARIOS (nombre, ape1, ape2, rol)
+VALUES 
+    ('Juan', 'Pérez', 'García', 'usuario'),
+    ('Ana', 'López', 'Martínez', 'admin'),
+    ('Carlos', 'Hernández', NULL, 'bibliotecario');
+
+-- Crear tabla LIBROS
+CREATE TABLE IF NOT EXISTS LIBROS (
+    ISBN CHAR(13) PRIMARY KEY,
+    titulo VARCHAR(100) NOT NULL,
+    autor VARCHAR(100) NOT NULL
+);
+
+-- Insertar datos en la tabla LIBROS
+INSERT INTO LIBROS (ISBN, titulo, autor)
+VALUES 
+    ('9783161484100', 'El Principito', 'Antoine de Saint-Exupéry'),
+    ('9780439139601', 'Harry Potter y el Prisionero de Azkaban', 'J.K. Rowling'),
+    ('9780451524935', '1984', 'George Orwell');
+
+-- Crear tabla PRESTAMOS
+CREATE TABLE IF NOT EXISTS PRESTAMOS (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ISBN CHAR(13),
+    fecha_desde DATE NOT NULL,
+    fecha_hasta DATE NOT NULL,
+    FOREIGN KEY (ISBN) REFERENCES LIBROS(ISBN)
+);
+
+-- Insertar datos en la tabla PRESTAMOS
+INSERT INTO PRESTAMOS (ISBN, fecha_desde, fecha_hasta)
+VALUES 
+    ('9783161484100', '2024-12-01', '2024-12-15'),
+    ('9780439139601', '2024-12-05', '2024-12-20'),
+    ('9780451524935', '2024-12-10', '2024-12-25');
+
+
+
