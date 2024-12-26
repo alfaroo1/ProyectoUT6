@@ -18,4 +18,13 @@ class BibliotecaModels
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
+    //RA2: Comprobar que existen los usuarios
+    public function compUser($nombre, $rol)
+    {
+        $stmt = $this->pdo->prepare("SELECT user,rol FROM usuarios WHERE nombre = :nombre AND rol = :rol");
+        $stmt->bindParam(":nombre", $nombre, PDO::PARAM_STR);
+        $stmt->bindParam(":rol", $rol, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

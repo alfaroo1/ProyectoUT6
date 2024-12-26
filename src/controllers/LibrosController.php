@@ -17,4 +17,9 @@ class LibrosController
         $tareas = $this->model->getLibros();
         $this->view->mostrarLibros($tareas);
     }
+    public function comprobUser($nombre,$rol){
+        $usuario = $this->model->compUser($nombre,$rol);
+        //Depende de si exitse
+        
+    }
 }

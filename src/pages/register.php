@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Biblioteca | Inicio</title>
+    <title>Biblioteca | Register</title>
 </head>
 
 <body>
@@ -23,8 +23,8 @@
                 <!-- Nav -->
                 <nav>
                     <ul class="flex gap-4">
-                        <li><a href="./index.php" class="text-xl">Inicio</a></li>
-                        <li><a href="./pages/libros.php" class="text-xl">Libros</a></li>
+                        <li><a href="../index.php" class="text-xl">Inicio</a></li>
+                        <li><a href="./libros.php" class="text-xl">Libros</a></li>
                         <li><a href="#" class="text-xl">Reservas</a></li>
                     </ul>
                 </nav>
@@ -32,9 +32,9 @@
             <!-- Buttons users -->
             <div>
                 <!-- Login -->
-                <button class="border border-white w-[100px] p-2 rounded-md mr-4"><a href="./pages/login.php">Log in</a></button>
+                <button class="border border-white w-[100px] p-2 rounded-md mr-4"><a href="./login.php">Log in</a></button>
                 <!-- Register -->
-                <button class="w-[100px] p-2 rounded-md bg-violet-600"><a href="./pages/register.php">Register</a></button>
+                <button class="w-[100px] p-2 rounded-md bg-violet-600"><a href="./register.php">Register</a></button>
             </div>
         </div>
         <!-- Cuerpo -->
