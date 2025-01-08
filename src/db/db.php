@@ -21,5 +21,5 @@ class DB
     public function getPDO()
     {
         return $this->pdo;
-    }
+    }   
 }

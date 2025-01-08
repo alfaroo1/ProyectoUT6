@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Biblioteca | Register</title>
+    <title>Biblioteca | Reserva</title>
 </head>
 
 <body>
@@ -30,16 +33,18 @@
                 </nav>
             </div>
             <!-- Buttons users -->
-            <div>
-                <!-- Login -->
-                <button class="border border-white w-[100px] p-2 rounded-md mr-4"><a href="./login.php">Log in</a></button>
-                <!-- Register -->
-                <button class="w-[100px] p-2 rounded-md bg-violet-600"><a href="./register.php">Register</a></button>
+            <div class="flex gap-6 items-center">
+                <!-- Nom User -->
+                <p class="mr-4 text-xl">Bienvenido, <?php echo $_SESSION['userNom']; ?></p>
+                <!-- Finish session -->
+                <button class="w-[150px] p-2 rounded-md bg-violet-600 text-lg"><a href="#">Cerrar Sesion</a></button>
             </div>
         </div>
         <!-- Cuerpo -->
-        <main class="text-white bg-slate-400 m-0">
+        <main class="p-4 flex flex-col items-center w-full">
+            <div class="bg-slate-400 text-white text-center w-1/2 rounded-sm p-4">
 
+            </div>
         </main>
         <!-- Footer -->
         <footer>

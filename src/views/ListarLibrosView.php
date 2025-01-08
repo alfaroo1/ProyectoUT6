@@ -6,7 +6,7 @@ class ListarLibrosView
     public function mostrarLibros($libros)
     {
         echo '<table>';
-        echo '<tr><th>Título</th><th>Completada</th></tr>';
+        echo '<tr><th>Título</th><th>Autor</th></tr>';
         foreach ($libros as $libro) {
             echo '<tr>';
             echo '<td>' . $libro['titulo'] . '</td>';

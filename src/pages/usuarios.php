@@ -9,7 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Biblioteca | Libros</title>
+    <title>Biblioteca | Inicio</title>
 </head>
 
 <body>
@@ -37,23 +37,17 @@ session_start();
                 <!-- Nom User -->
                 <p class="mr-4 text-xl">Bienvenido, <?php echo $_SESSION['userNom']; ?></p>
                 <!-- Finish session -->
-                <button class="w-[150px] p-2 rounded-md bg-violet-600 text-lg"><a href="#">Cerrar Sesion</a></button>
+                <button class="w-[150px] p-2 rounded-md bg-violet-600"><a href="#">Cerrar Sesion</a></button>
             </div>
         </div>
         <!-- Cuerpo -->
-        <main class="p-4 flex flex-col items-center w-full">
-            <div class="bg-slate-400 text-white text-center w-1/2 rounded-sm p-4">
-                <h2 class="font-medium text-2xl mb-10">Estos son todos los libros actuales</h2>
-                <?php
-                include "../views/ListarLibrosView.php";
-                include "../controllers/LibrosController.php";
-                include "../models/BibliotecaModels.php";
+        <main class="text-white bg-slate-400 m-0">
+            <div>
 
-                $librosController = new LibrosController();
-
-                $librosController->listar();
-                ?>
             </div>
+            <?php
+
+            ?>
         </main>
         <!-- Footer -->
         <footer>

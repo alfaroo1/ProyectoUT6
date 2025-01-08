@@ -9,7 +9,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Biblioteca | Libros</title>
+    <title>Biblioteca | Admin</title>
 </head>
 
 <body>
@@ -33,27 +33,21 @@ session_start();
                 </nav>
             </div>
             <!-- Buttons users -->
-            <div class="flex gap-6 items-center">
-                <!-- Nom User -->
-                <p class="mr-4 text-xl">Bienvenido, <?php echo $_SESSION['userNom']; ?></p>
-                <!-- Finish session -->
-                <button class="w-[150px] p-2 rounded-md bg-violet-600 text-lg"><a href="#">Cerrar Sesion</a></button>
+            <div>
+                <!-- Login -->
+                <button class="border border-white w-[100px] p-2 rounded-md mr-4">Log in</button>
+                <!-- Register -->
+                <button class="w-[100px] p-2 rounded-md bg-violet-600">Register</button>
             </div>
         </div>
         <!-- Cuerpo -->
-        <main class="p-4 flex flex-col items-center w-full">
-            <div class="bg-slate-400 text-white text-center w-1/2 rounded-sm p-4">
-                <h2 class="font-medium text-2xl mb-10">Estos son todos los libros actuales</h2>
-                <?php
-                include "../views/ListarLibrosView.php";
-                include "../controllers/LibrosController.php";
-                include "../models/BibliotecaModels.php";
-
-                $librosController = new LibrosController();
-
-                $librosController->listar();
-                ?>
+        <main class="text-white bg-slate-400 m-0">
+            <div>
+                <h1>Bienvenido, <?php echo $_SESSION['userNom']; ?></h1>
             </div>
+            <?php
+
+            ?>
         </main>
         <!-- Footer -->
         <footer>
