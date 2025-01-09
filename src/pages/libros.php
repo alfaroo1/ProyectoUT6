@@ -28,7 +28,7 @@ session_start();
                     <ul class="flex gap-4">
                         <li><a href="../index.php" class="text-xl">Inicio</a></li>
                         <li><a href="./libros.php" class="text-xl">Libros</a></li>
-                        <li><a href="#" class="text-xl">Reservas</a></li>
+                        <li><a href="./reserva.php" class="text-xl">Reservas</a></li>
                     </ul>
                 </nav>
             </div>

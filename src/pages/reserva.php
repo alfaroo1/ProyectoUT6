@@ -1,5 +1,22 @@
 <?php
 session_start();
+//Declaramos la variable de mensaje de error
+$error = null;
+//Controlamos que el usuario envie el formulario
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    //Sacamos los datos
+    $libro = $_POST['nom_lib'];
+    $fecha_inicio = $_POST['fech_ini'];
+    $fecha_fin = $_POST['fecha_fin'];
+    //
+    include "../controllers/ReservasController.php";
+    include "../models/ReservasModels.php";
+    $controller = new ReservasController();
+    //Sacamos el id del libro
+    $id = $controller->getIdLibro($libro);
+    //Realizamos la inserccion
+    $controller->reserva($id, $_SESSION['userId'], $fecha_inicio, $fecha_fin);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -9,7 +26,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../output.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Biblioteca | Reserva</title>
+    <title>Biblioteca | Reservas</title>
 </head>
 
 <body>
@@ -42,8 +59,34 @@ session_start();
         </div>
         <!-- Cuerpo -->
         <main class="p-4 flex flex-col items-center w-full">
-            <div class="bg-slate-400 text-white text-center w-1/2 rounded-sm p-4">
-
+            <!-- Formulario Reserva -->
+            <div class="bg-slate-900 mt-12 w-[500px] h-[500px] rounded-sm p-4 text-white">
+                <h2 class="text-center text-2xl">Reserva un libro</h2>
+                <form action="" method="post" class="mt-6">
+                    <!-- Nombre libro -->
+                    <div class="text-center flex flex-col items-center gap-4 mt-6">
+                        <label for="">Nombre Libro</label>
+                        <input type="text" name="nom_lib" class="w-[250px] text-black">
+                    </div>
+                    <!-- Fecha inicio reserva -->
+                    <div class="text-center flex flex-col items-center gap-4 mt-6">
+                        <label for="">Fecha inicio</label>
+                        <input type="date" name="fech_ini" class="w-[250px] text-black">
+                    </div>
+                    <!-- Fecha fin reserva -->
+                    <div class="text-center flex flex-col items-center gap-4 mt-6">
+                        <label for="">Fecha limite</label>
+                        <input type="date" name="fech_lim" class="w-[250px] text-black">
+                    </div>
+                    <!-- Mensaje de error -->
+                    <?php
+                    if ($error != null) {
+                        echo $error;
+                    }
+                    ?>
+                    <!-- Btn enviar -->
+                    <button type="submit" class="w-[100px] p-2 mt-8 ml-7 rounded-md bg-violet-600 text-center">Enviar</button>
+                </form>
             </div>
         </main>
         <!-- Footer -->
