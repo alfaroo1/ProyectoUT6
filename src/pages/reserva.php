@@ -5,17 +5,13 @@ $error = null;
 //Controlamos que el usuario envie el formulario
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
     //Sacamos los datos
-    $libro = $_POST['nom_lib'];
-    $fecha_inicio = $_POST['fech_ini'];
-    $fecha_fin = $_POST['fecha_fin'];
+    $isbn = $_POST['isbn_lib'];
     //
     include "../controllers/ReservasController.php";
     include "../models/ReservasModels.php";
     $controller = new ReservasController();
-    //Sacamos el id del libro
-    $id = $controller->getIdLibro($libro);
     //Realizamos la inserccion
-    $controller->reserva($id, $_SESSION['userId'], $fecha_inicio, $fecha_fin);
+    $controller->reserva($isbn, $_SESSION['userId']);
 }
 ?>
 <!DOCTYPE html>
@@ -60,23 +56,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         <!-- Cuerpo -->
         <main class="p-4 flex flex-col items-center w-full">
             <!-- Formulario Reserva -->
-            <div class="bg-slate-900 mt-12 w-[500px] h-[500px] rounded-sm p-4 text-white">
+            <div class="bg-slate-900 mt-12 w-[500px] h-[250px] rounded-sm p-4 text-white">
                 <h2 class="text-center text-2xl">Reserva un libro</h2>
                 <form action="" method="post" class="mt-6">
                     <!-- Nombre libro -->
                     <div class="text-center flex flex-col items-center gap-4 mt-6">
-                        <label for="">Nombre Libro</label>
-                        <input type="text" name="nom_lib" class="w-[250px] text-black">
-                    </div>
-                    <!-- Fecha inicio reserva -->
-                    <div class="text-center flex flex-col items-center gap-4 mt-6">
-                        <label for="">Fecha inicio</label>
-                        <input type="date" name="fech_ini" class="w-[250px] text-black">
-                    </div>
-                    <!-- Fecha fin reserva -->
-                    <div class="text-center flex flex-col items-center gap-4 mt-6">
-                        <label for="">Fecha limite</label>
-                        <input type="date" name="fech_lim" class="w-[250px] text-black">
+                        <label for="">ISBN Libro</label>
+                        <input type="text" name="isbn_lib" class="w-[250px] text-black">
                     </div>
                     <!-- Mensaje de error -->
                     <?php

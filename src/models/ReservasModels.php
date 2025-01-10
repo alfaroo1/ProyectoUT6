@@ -12,21 +12,20 @@ class ReservasModels
         $this->bd = new DB();
         $this->pdo = $this->bd->getPDO();
     }
-    //RA4
-    public function getIdLibro($libro)
+    public function reserva($id_libro, $id_user)
     {
-        $stmt = $this->pdo->prepare("SELECT id FROM libros WHERE titulo = :titulo");
-        $stmt->bindParam(":titulo", $libro, PDO::PARAM_STR);
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-    public function reserva($id_libro, $id_user, $fech_ini, $fech_fin)
-    {
-        $stmt = $this->pdo->prepare("INSERT INTO prestamos VALUES (:id_lib,:id_user,:fech_ini,:fech_fin)");
+        $stmt = $this->pdo->prepare("INSERT INTO prestamos (ISBN,fecha_desde,fecha_hasta,id_user) VALUES (:id_lib,:fech_ini,:fech_fin,:id_user)");
         $stmt->bindParam(":id_lib", $id_libro, PDO::PARAM_INT);
         $stmt->bindParam(":id_user", $id_user, PDO::PARAM_INT);
-        $stmt->bindParam(":fech_ini", $fech_ini, PDO::PARAM_STR);
-        $stmt->bindParam(":fech_fin", $fech_fin, PDO::PARAM_STR);
+        //Fecha actual
+        $fechaActual = new DateTime();
+        $fechaActualString = $fechaActual->format('Y-m-d');
+        $stmt->bindParam(":fech_ini", $fechaActualString, PDO::PARAM_STR);
+        //Fecha actual mas 30 dias
+        $fechaFin = new DateTime();
+        $fechaFin->modify('+30 days');
+        $fechaFinString = $fechaFin->format('Y-m-d');
+        $stmt->bindParam(":fech_fin", $fechaActualString, PDO::PARAM_STR);
         $stmt->execute();
     }
 }

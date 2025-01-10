@@ -44,15 +44,24 @@ session_start();
         <main class="p-4 flex flex-col items-center w-full">
             <div class="bg-slate-400 text-white text-center w-1/2 rounded-sm p-4">
                 <h2 class="font-medium text-2xl mb-10">Estos son todos los libros actuales</h2>
-                <?php
-                include "../views/ListarLibrosView.php";
-                include "../controllers/LibrosController.php";
-                include "../models/BibliotecaModels.php";
+                <div class="text-ceneter w-full">
+                    <table>
+                        <tr>
+                            <th>Titulo</th>
+                            <th>Autor</th>
+                            <th>ISBN</th>
+                        </tr>
+                        <?php
+                        include "../views/ListarLibrosView.php";
+                        include "../controllers/LibrosController.php";
+                        include "../models/BibliotecaModels.php";
 
-                $librosController = new LibrosController();
+                        $librosController = new LibrosController();
 
-                $librosController->listar();
-                ?>
+                        $librosController->listar();
+                        ?>
+                    </table>
+                </div>
             </div>
         </main>
         <!-- Footer -->
