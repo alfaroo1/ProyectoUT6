@@ -41,16 +41,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <!-- Nav -->
                 <nav>
                     <ul class="flex gap-4">
-                        <li><a href="../index.php" class="text-xl">Inicio</a></li>
-                        <li><a href="./libros.php" class="text-xl">Libros</a></li>
-                        <li><a href="#" class="text-xl">Reservas</a></li>
+                        <li><a href="./adminInsert.php" class="text-xl">Insertar</a></li>
+                        <li><a href="./adminUpdate.php" class="text-xl">Modificar Y Borrar</a></li>
+                        <li><a href="./reserva.php" class="text-xl">Reservas</a></li>
                     </ul>
                 </nav>
             </div>
             <!-- Buttons users -->
             <div class="flex gap-6 items-center">
                 <!-- Nom User -->
-                <p class="mr-4 text-xl">Bienvenido, <?php echo $_SESSION['userNom']; ?></p>
+                <p class="mr-4 text-xl">Bienvenid@, <?php echo $_SESSION['userNom']; ?></p>
                 <!-- Finish session -->
                 <button class="w-[150px] p-2 rounded-md bg-violet-600 text-lg">
                     <a href="../controllers/LogoutController.php">Cerrar Sesion</a>
@@ -83,7 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <button type="submit" class="w-[100px] p-2 mt-8 ml-7 rounded-md bg-violet-600 text-center">Enviar</button>
                 </form>
             </div>
-
         </main>
         <!-- Footer -->
         <footer>

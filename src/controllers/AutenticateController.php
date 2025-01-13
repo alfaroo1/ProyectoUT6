@@ -22,7 +22,7 @@ class AutenticateController
             if ($rol == "usuario") {
                 header("Location: ./pages/libros.php");
             } else if ($rol == "admin") {
-                header("Location: ./pages/librosAdmin.php");
+                header("Location: ./pages/adminInsert.php");
             }
         }
     }

@@ -12,12 +12,6 @@ class BibliotecaModels
         $this->pdo = $this->bd->getPDO();
     }
     //RA3: Listar todos los libros que contiene la BD
-    public function getLibros()
-    {
-        $stmt = $this->pdo->prepare("SELECT * FROM libros");
-        $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
     //RA2: Comprobar que existen los usuarios
     public function compUser($nombre, $rol)
     {

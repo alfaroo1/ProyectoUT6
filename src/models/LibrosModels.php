@@ -28,7 +28,21 @@ class LibrosModels
         $stmt->execute();
     }
     //RA6
-
+    public function modificarLibros($ISBN, $titulo, $autor)
+    {
+        $stmt = $this->pdo->prepare("UPDATE libros 
+        SET titulo = :titulo , autor = :autor
+        WHERE ISBN = :ISBN");
+        $stmt->bindParam(":ISBN", $ISBN, PDO::PARAM_STR);
+        $stmt->bindParam(":titulo", $titulo, PDO::PARAM_STR);
+        $stmt->bindParam(":autor", $autor, PDO::PARAM_STR);
+        $stmt->execute();
+    }
     //RA7
-
+    public function eliminarLibros($ISBN)
+    {
+        $stmt = $this->pdo->prepare("DELETE FROM libros WHERE ISBN = :ISBN");
+        $stmt->bindParam(":ISBN", $ISBN, PDO::PARAM_STR);
+        $stmt->execute();
+    }
 }
