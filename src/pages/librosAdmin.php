@@ -1,5 +1,20 @@
 <?php
 session_start();
+//Declaramos la variable error
+$error = null;
+//Controlmaos que el usuario envie el formulario
+if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    //Sacamos los datos
+    $isbn = $_POST['isbn'];
+    $titulo = $_POST['title'];
+    $autor = $_POST['autor'];
+    //LLamamos al controlador
+    include "../controllers/LibrosController.php";
+    include "../models/LibrosModels.php";
+    include "../views/ListarLibrosView.php";
+    $controller = new LibrosController();
+    $controller->agregarLibros($isbn, $titulo, $autor);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,21 +63,21 @@ session_start();
             <div class="bg-slate-900 mt-12 w-[500px] h-[450px] rounded-sm p-4 text-white"">
                 <h2 class=" text-center text-2xl font-medium">Inserta un nuevo libro</h2>
                 <!-- Formulario -->
-                <form action="" method=" post">
+                <form action="" method="post">
                     <!-- Numero ISBN -->
                     <div class="text-center flex flex-col items-center gap-4 mt-6">
                         <label for="">ISBN</label>
-                        <input type="text" name="isbn">
+                        <input type="text" name="isbn" class="text-black">
                     </div>
                     <!-- Nombre Libro -->
                     <div class="text-center flex flex-col items-center gap-4 mt-6">
                         <label for="">Titulo</label>
-                        <input type="text" name="title">
+                        <input type="text" name="title" class="text-black">
                     </div>
                     <!-- Nombre Autor -->
                     <div class="text-center flex flex-col items-center gap-4 mt-6">
                         <label for="">Autor</label>
-                        <input type="text" name="autor">
+                        <input type="text" name="autor" class="text-black">
                     </div>
                     <!-- Btn enviar -->
                     <button type="submit" class="w-[100px] p-2 mt-8 ml-7 rounded-md bg-violet-600 text-center">Enviar</button>

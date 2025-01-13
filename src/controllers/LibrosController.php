@@ -8,13 +8,18 @@ class LibrosController
 
     public function __construct()
     {
-        $this->model = new BibliotecaModels();
+        $this->model = new LibrosModels();
         $this->view = new ListarLibrosView();
     }
 
     public function listar()
     {
-        $tareas = $this->model->getLibros();
-        $this->view->mostrarLibros($tareas);
+        $libros = $this->model->getLibros();
+        $this->view->mostrarLibros($libros);
+    }
+    public function agregarLibros($ISBN, $titulo, $autor)
+    {
+        $libro = $this->model->agregarLibros($ISBN, $titulo, $autor);
+        // $this->view->insertarLibros();
     }
 }

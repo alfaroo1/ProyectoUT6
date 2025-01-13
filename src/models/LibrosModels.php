@@ -12,17 +12,23 @@ class LibrosModels
         $this->bd = new DB();
         $this->pdo = $this->bd->getPDO();
     }
-
-    //RA5
-    public function agregarLibros($titulo, $autor)
+    public function getLibros()
     {
-        $stmt = $this->pdo->prepare("INSERT INTO libros VALUES(:titulo,:autor)");
+        $stmt = $this->pdo->prepare("SELECT * FROM libros");
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    //RA5
+    public function agregarLibros($ISBN, $titulo, $autor)
+    {
+        $stmt = $this->pdo->prepare("INSERT INTO libros (ISBN,titulo,autor) VALUES (:ISBN,:titulo,:autor)");
+        $stmt->bindParam(":ISBN", $ISBN, PDO::PARAM_STR);
         $stmt->bindParam(":titulo", $titulo, PDO::PARAM_STR);
         $stmt->bindParam(":autor", $autor, PDO::PARAM_STR);
         $stmt->execute();
     }
     //RA6
-    
+
     //RA7
 
 }
