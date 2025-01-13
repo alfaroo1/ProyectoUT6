@@ -12,6 +12,7 @@ class ReservasModels
         $this->bd = new DB();
         $this->pdo = $this->bd->getPDO();
     }
+    //Funcion para reservar
     public function reserva($id_libro, $id_user)
     {
         $stmt = $this->pdo->prepare("INSERT INTO prestamos (ISBN,fecha_desde,fecha_hasta,id_user) VALUES (:id_lib,:fech_ini,:fech_fin,:id_user)");
@@ -28,4 +29,6 @@ class ReservasModels
         $stmt->bindParam(":fech_fin", $fechaActualString, PDO::PARAM_STR);
         $stmt->execute();
     }
+    //Funcion para controlar que el mismo usuario no pueda reservar 2 veces el mismo libro
+
 }

@@ -20,9 +20,9 @@ class AutenticateController
             $_SESSION['userNom'] = $user['nombre'];
             //Depende del tipo de user
             if ($rol == "usuario") {
-                header("Location: ../pages/usuarios.php");
+                header("Location: ./pages/libros.php");
             } else if ($rol == "admin") {
-                header("Location: ../pages/admin.php");
+                header("Location: ./pages/librosAdmin.php");
             }
         }
     }
