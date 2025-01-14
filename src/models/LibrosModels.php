@@ -27,6 +27,15 @@ class LibrosModels
         $stmt->bindParam(":autor", $autor, PDO::PARAM_STR);
         $stmt->execute();
     }
+    //Controlar que no introduzca un libro ya insertado en la tabla
+    public function controlInsercionLibros($ISBN)
+    {
+        $stmt = $this->pdo->prepare("SELECT * FROM libros  
+        WHERE ISBN = :ISBN");
+        $stmt->bindParam(":ISBN", $ISBN, PDO::PARAM_STR);
+        $stmt->execute();
+        return $stmt->fetch(PDO::FETCH_ASSOC) !== false;
+    }
     //RA6
     public function modificarLibros($ISBN, $titulo, $autor)
     {

@@ -1,20 +1,5 @@
 <?php
 session_start();
-//Declaramos la variable error
-$error = null;
-//Controlmaos que el usuario envie el formulario
-if ($_SERVER['REQUEST_METHOD'] == "POST") {
-    //Sacamos los datos
-    $isbn = $_POST['isbn'];
-    $titulo = $_POST['title'];
-    $autor = $_POST['autor'];
-    //LLamamos al controlador
-    include "../controllers/LibrosController.php";
-    include "../models/LibrosModels.php";
-    include "../views/ListarLibrosView.php";
-    $controller = new LibrosController();
-    $controller->agregarLibros($isbn, $titulo, $autor);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                     <ul class="flex gap-4">
                         <li><a href="./adminInsert.php" class="text-xl">Insertar</a></li>
                         <li><a href="./adminUpdate.php" class="text-xl">Modificar Y Borrar</a></li>
-                        <li><a href="./reserva.php" class="text-xl">Reservas</a></li>
+                        <li><a href="./adminReserva.php" class="text-xl">Reservas</a></li>
                     </ul>
                 </nav>
             </div>
@@ -79,6 +64,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                         <label for="">Autor</label>
                         <input type="text" name="autor" class="text-black">
                     </div>
+                    <!-- Mostramos mensaje -->
+                    <?php
+                    //Controlmaos que el usuario envie el formulario
+                    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                        //Sacamos los datos
+                        $isbn = $_POST['isbn'];
+                        $titulo = $_POST['title'];
+                        $autor = $_POST['autor'];
+                        //LLamamos al controlador
+                        include "../controllers/LibrosController.php";
+                        include "../models/LibrosModels.php";
+                        include "../views/ListarLibrosView.php";
+                        $controller = new LibrosController();
+                        $controller->agregarLibros($isbn, $titulo, $autor);
+                    }
+                    ?>
                     <!-- Btn enviar -->
                     <button type="submit" class="w-[100px] p-2 mt-8 ml-7 rounded-md bg-violet-600 text-center">Enviar</button>
                 </form>

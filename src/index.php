@@ -30,34 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 <body>
     <!-- Container -->
     <div>
-        <!-- Navegador -->
-        <div class="flex justify-between items-center p-8 bg-slate-900 text-white font-medium">
-            <div class="flex gap-12 items-center">
-                <!-- Logo Web -->
-                <div class="flex items-center gap-2">
-                    <p class="text-2xl"><i class="fa-solid fa-book"></i></p>
-                    <h1 class="text-2xl">BookEase</h1>
-                </div>
-                <!-- Nav -->
-                <nav>
-                    <ul class="flex gap-4">
-                        <li><a href="./index.php" class="text-xl">Inicio</a></li>
-                        <li><a href="./pages/libros.php" class="text-xl">Libros</a></li>
-                        <li><a href="./pages/reserva.php" class="text-xl">Reservas</a></li>
-                    </ul>
-                </nav>
-            </div>
-            <!-- Buttons users -->
-            <div>
-                <!-- Login -->
-                <button class="border border-white w-[100px] p-2 rounded-md mr-4"><a href="./login.php">Log in</a></button>
-                <!-- Register -->
-                <button class="w-[100px] p-2 rounded-md bg-violet-600"><a href="./register.php">Register</a></button>
-            </div>
-        </div>
         <!-- Cuerpo -->
         <main class="mt-12 flex justify-center">
-            <div class="bg-slate-900 mt-12 w-[500px] h-[350px] rounded-sm p-4">
+            <div class="bg-slate-900 mt-12 w-[500px] h-[350px] rounded-sm p-4 text-white">
                 <h2 class="text-center text-2xl">Inicia sesion</h2>
                 <form action="" method="post" class="mt-6">
                     <!-- Nombre -->

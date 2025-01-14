@@ -24,8 +24,12 @@ class LibrosController
     }
     public function agregarLibros($ISBN, $titulo, $autor)
     {
-        $libro = $this->model->agregarLibros($ISBN, $titulo, $autor);
-        // $this->view->insertarLibros();
+        if ($this->model->controlInsercionLibros($ISBN)) {
+            echo '<p class="text-red-500 text-center font-medium text-xl mt-4">El libro ' . $ISBN . ' ya existe</p>';
+        } else {
+            $this->model->agregarLibros($ISBN, $titulo, $autor);
+            echo '<p class="text-green-500 text-center font-medium text-xl mt-4">El libro ' . $titulo . ' se ha insertado correctamente</p>';
+        }
     }
     //Funcion que llamada al modelo para modifcar libros
     public function modificarLibros($ISBN, $titulo, $autor)

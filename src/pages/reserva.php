@@ -39,9 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <!-- Nav -->
                 <nav>
                     <ul class="flex gap-4">
-                        <li><a href="../index.php" class="text-xl">Inicio</a></li>
+                        <li><a href="#" class="text-xl">Inicio</a></li>
                         <li><a href="./libros.php" class="text-xl">Libros</a></li>
-                        <li><a href="#" class="text-xl">Reservas</a></li>
+                        <li><a href="./reserva.php" class="text-xl">Reservas</a></li>
                     </ul>
                 </nav>
             </div>
@@ -50,7 +50,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <!-- Nom User -->
                 <p class="mr-4 text-xl">Bienvenido, <?php echo $_SESSION['userNom']; ?></p>
                 <!-- Finish session -->
-                <button class="w-[150px] p-2 rounded-md bg-violet-600 text-lg"><a href="#">Cerrar Sesion</a></button>
+                <button class="w-[150px] p-2 rounded-md bg-violet-600 text-lg">
+                    <a href="../controllers/LogoutController.php">Cerrar Sesion</a>
+                </button>
             </div>
         </div>
         <!-- Cuerpo -->

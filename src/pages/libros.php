@@ -26,7 +26,7 @@ session_start();
                 <!-- Nav -->
                 <nav>
                     <ul class="flex gap-4">
-                        <li><a href="../index.php" class="text-xl">Inicio</a></li>
+                        <li><a href="#" class="text-xl">Inicio</a></li>
                         <li><a href="./libros.php" class="text-xl">Libros</a></li>
                         <li><a href="./reserva.php" class="text-xl">Reservas</a></li>
                     </ul>
@@ -56,7 +56,7 @@ session_start();
                         <?php
                         include "../views/ListarLibrosView.php";
                         include "../controllers/LibrosController.php";
-                        include "../models/BibliotecaModels.php";
+                        include "../models/LibrosModels.php";
 
                         $librosController = new LibrosController();
 

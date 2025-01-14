@@ -28,7 +28,7 @@ session_start();
                     <ul class="flex gap-4">
                         <li><a href="./adminInsert.php" class="text-xl">Insertar</a></li>
                         <li><a href="./adminUpdate.php" class="text-xl">Modificar Y Borrar</a></li>
-                        <li><a href="./reserva.php" class="text-xl">Reservas</a></li>
+                        <li><a href="./adminReserva.php" class="text-xl">Reservas</a></li>
                     </ul>
                 </nav>
             </div>
@@ -45,10 +45,10 @@ session_start();
         <!-- Cuerpo -->
         <main class="p-4 flex flex-col items-center w-full">
             <!-- Tabla para borrar o modifcar lirbos -->
-            <div class="bg-slate-400 text-white text-center w-1/2 rounded-sm p-4 mt-12">
-                <h2 class="font-medium text-2xl mb-10">Estos son todos los libros actuales</h2>
-                <div class="text-ceneter w-full">
-                    <table>
+            <div class="bg-slate-400 text-white text-center w-2/3 rounded-sm p-4 mt-12">
+                <h2 class="font-medium text-2xl mb-8">Estos son todos los libros actuales</h2>
+                <div class="flex flex-col items-center w-full">
+                    <table class="text-center">
                         <tr>
                             <th>ISBN</th>
                             <th>Titulo</th>
@@ -64,17 +64,25 @@ session_start();
                         //Controlamos lo qu haga el usuario
                         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                             $isbn = $_POST['isbn'];
-                            echo $isbn;
                             //Si pulsa el boton modificar
                             if (isset($_POST['mod'])) {
                                 //Sacamos los datos del form
                                 $titulo = $_POST['titulo'];
                                 $autor  = $_POST['autor'];
-                                //Lllamos a la funcion de modificacion
-                                $controller->modificarLibros($isbn, $titulo, $autor);
+                                if ($titulo != "" && $autor != "") {
+                                    //Lllamos a la funcion de modificacion
+                                    $controller->modificarLibros($isbn, $titulo, $autor);
+                                    //Imprimimos un mensaje de confirmacion
+                                    echo '<p class="text-green-500 font-medium text-xl mt-2">Se ha modificado correctamente el libro ' . $isbn . '</p>';
+                                } else if ($titulo == "" || $autor == "") {
+                                    //Imprimimos un mensaje de error
+                                    echo '<p class="text-red-500 font-medium text-xl mt-2">Hay algun parametro vacio</p>';
+                                }
                             } //Si pulsa el boton de borrar
                             else if ($_POST['borrar']) {
                                 $controller->eliminarLibros($isbn);
+                                //Imprimimos un mensaje de confirmacion
+                                echo '<p class="text-green-500 font-medium text-xl mt-2">Se ha eliminado correctamente el libro ' . $isbn . '</p>';
                             }
                         }
                         ?>
