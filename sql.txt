@@ -1,6 +1,6 @@
 -- Crear la base de datos
-CREATE DATABASE IF NOT EXISTS Biblioteca;
-USE Biblioteca;
+CREATE DATABASE IF NOT EXISTS biblioteca;
+USE biblioteca;
 
 -- Crear tabla USUARIOS
 CREATE TABLE IF NOT EXISTS USUARIOS (
@@ -16,7 +16,14 @@ INSERT INTO USUARIOS (nombre, ape1, ape2, rol)
 VALUES 
     ('Juan', 'Pérez', 'García', 'usuario'),
     ('Ana', 'López', 'Martínez', 'admin'),
-    ('Carlos', 'Hernández', NULL, 'bibliotecario');
+    ('Carlos', 'Hernández', NULL, 'bibliotecario'),
+    ('María', 'González', 'Fernández', 'usuario'),
+    ('Luis', 'Ramírez', 'Santos', 'usuario'),
+    ('Elena', 'Díaz', 'Martín', 'usuario'),
+    ('Pedro', 'Sánchez', 'Ruiz', 'usuario'),
+    ('Carmen', 'Torres', 'Jiménez', 'usuario'),
+    ('Javier', 'Vargas', 'Morales', 'usuario'),
+    ('Lucía', 'Castro', 'Rojas', 'usuario');
 
 -- Crear tabla LIBROS
 CREATE TABLE IF NOT EXISTS LIBROS (
@@ -30,23 +37,52 @@ INSERT INTO LIBROS (ISBN, titulo, autor)
 VALUES 
     ('9783161484100', 'El Principito', 'Antoine de Saint-Exupéry'),
     ('9780439139601', 'Harry Potter y el Prisionero de Azkaban', 'J.K. Rowling'),
-    ('9780451524935', '1984', 'George Orwell');
+    ('9780451524935', '1984', 'George Orwell'),
+    ('9783161484101', 'Cien Años de Soledad', 'Gabriel García Márquez'),
+    ('9783161484102', 'Don Quijote de la Mancha', 'Miguel de Cervantes'),
+    ('9783161484103', 'La Odisea', 'Homero'),
+    ('9783161484104', 'La Divina Comedia', 'Dante Alighieri'),
+    ('9783161484105', 'Los Juegos del Hambre', 'Suzanne Collins'),
+    ('9783161484106', 'El Hobbit', 'J.R.R. Tolkien'),
+    ('9783161484107', 'El Nombre del Viento', 'Patrick Rothfuss'),
+    ('9783161484108', 'Fahrenheit 451', 'Ray Bradbury'),
+    ('9783161484109', 'Crimen y Castigo', 'Fyodor Dostoevsky'),
+    ('9783161484110', 'La Metamorfosis', 'Franz Kafka'),
+    ('9783161484111', 'Orgullo y Prejuicio', 'Jane Austen'),
+    ('9783161484112', 'Drácula', 'Bram Stoker'),
+    ('9783161484113', 'Los Miserables', 'Victor Hugo'),
+    ('9783161484114', 'It', 'Stephen King'),
+    ('9783161484115', 'El Silmarillion', 'J.R.R. Tolkien'),
+    ('9783161484116', 'La Sombra del Viento', 'Carlos Ruiz Zafón'),
+    ('9783161484117', 'Dune', 'Frank Herbert'),
+    ('9783161484118', 'El Perfume', 'Patrick Süskind'),
+    ('9783161484119', 'El Código Da Vinci', 'Dan Brown'),
+    ('9783161484120', 'Los Pilares de la Tierra', 'Ken Follett'),
+    ('9783161484121', 'El Alquimista', 'Paulo Coelho'),
+    ('9783161484122', 'La Historia Interminable', 'Michael Ende'),
+    ('9783161484123', 'El Retrato de Dorian Gray', 'Oscar Wilde'),
+    ('9783161484124', 'La Isla del Tesoro', 'Robert Louis Stevenson'),
+    ('9783161484125', 'Alicia en el País de las Maravillas', 'Lewis Carroll'),
+    ('9783161484126', 'El Señor de los Anillos', 'J.R.R. Tolkien'),
+    ('9783161484127', 'El Diario de Ana Frank', 'Ana Frank'),
+    ('9783161484128', 'La Celestina', 'Fernando de Rojas');
 
--- Crear tabla PRESTAMOS
+-- Crear tabla PRESTAMOS con id_usuario como clave foránea
 CREATE TABLE IF NOT EXISTS PRESTAMOS (
     id INT AUTO_INCREMENT PRIMARY KEY,
     ISBN CHAR(13),
+    id_usuario INT,
     fecha_desde DATE NOT NULL,
     fecha_hasta DATE NOT NULL,
-    FOREIGN KEY (ISBN) REFERENCES LIBROS(ISBN)
+    FOREIGN KEY (ISBN) REFERENCES LIBROS(ISBN),
+    FOREIGN KEY (id_usuario) REFERENCES USUARIOS(id)
 );
 
 -- Insertar datos en la tabla PRESTAMOS
-INSERT INTO PRESTAMOS (ISBN, fecha_desde, fecha_hasta)
+INSERT INTO PRESTAMOS (ISBN, id_usuario, fecha_desde, fecha_hasta)
 VALUES 
-    ('9783161484100', '2024-12-01', '2024-12-15'),
-    ('9780439139601', '2024-12-05', '2024-12-20'),
-    ('9780451524935', '2024-12-10', '2024-12-25');
-
-
-
+    ('9783161484100', 1, '2024-12-01', '2024-12-15'),
+    ('9780439139601', 2, '2024-12-05', '2024-12-20'),
+    ('9780451524935', 3, '2024-12-10', '2024-12-25'),
+    ('9783161484101', 4, '2024-12-11', '2024-12-26'),
+    ('9783161484102', 5, '2024-12-12', '2024-12-27');

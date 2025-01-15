@@ -6,7 +6,7 @@ class AutenticateController
 
     public function __construct()
     {
-        $this->model = new BibliotecaModels();
+        $this->model = new UsersModel();
     }
     public function login($nombre, $rol)
 

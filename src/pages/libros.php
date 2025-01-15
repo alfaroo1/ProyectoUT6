@@ -35,7 +35,7 @@ session_start();
             <!-- Buttons users -->
             <div class="flex gap-6 items-center">
                 <!-- Nom User -->
-                <p class="mr-4 text-xl">Bienvenido, <?php echo $_SESSION['userNom']; ?></p>
+                <p class="mr-4 text-xl">Bienvenid@, <?php echo $_SESSION['userNom']; ?></p>
                 <!-- Finish session -->
                 <button class="w-[150px] p-2 rounded-md bg-violet-600 text-lg">
                     <a href="../controllers/LogoutController.php">Cerrar Sesion</a>

@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../db/db.php";
 
-class BibliotecaModels
+class UsersModel
 {
     private $pdo;
     private $bd;
@@ -11,7 +11,6 @@ class BibliotecaModels
         $this->bd = new DB();
         $this->pdo = $this->bd->getPDO();
     }
-    //RA3: Listar todos los libros que contiene la BD
     //RA2: Comprobar que existen los usuarios
     public function compUser($nombre, $rol)
     {
